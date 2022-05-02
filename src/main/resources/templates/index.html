@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Administrador de productos</title>
+</head>
+<body>
+<div align="center">
+	<h1>ADMINISTRADOR DE PRODUCTOS</h1>
+	<a href="new">AGREGAR UN NUEVO PRODUCTO</a>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Marca</th>
+				<th>Hecho en</th>
+				<th>Precio</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product : ${listProducts}">
+				<td th:text="${product.id}">ID</td>
+				<td th:text="${product.name}">nombre</td>
+				<td th:text="${product.brand}">marca</td>
+				<td th:text="${product.madein}">hecho en</td>
+				<td th:text="${product.price}">precio</td>
+				<td>
+					<a th:href="@{'/edit/' + ${product.id}}">Modificar</a>
+					<a th:href="@{'/delete/' + ${product.id}}">Eliminar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
